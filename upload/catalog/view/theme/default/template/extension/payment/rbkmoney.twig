@@ -1,0 +1,26 @@
+{% if (errormsg is not empty) %} 
+{{ errormsg }}
+{% else %} 
+{% if (form_css_button is not empty) %} 
+<style>
+    {{ form_css_button }}
+</style>
+{% endif %} 
+
+<form action="{{ payment_form_success_url }}" method="POST">
+    <script src="{{ payment_form_url }}" class="rbkmoney-checkout"
+            data-invoice-id="{{ invoice_id }}"
+            data-invoice-access-token="{{ invoice_access_token }}"
+    {% if (form_company_name is not empty) %} 
+    data-name="{{ form_company_name }}"
+    {% endif %} 
+    {% if (form_button_label is not empty) %} 
+    data-label="{{ form_button_label }}"
+    {% endif %} 
+    {% if (form_description is not empty) %} 
+    data-description="{{ form_description }}"
+    {% endif %} 
+    >
+    </script>
+    </form>
+    {% endif %}
